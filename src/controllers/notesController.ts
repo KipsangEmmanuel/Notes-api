@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { v4 as uuidv4 } from 'uuid';
-const noteSchema = require('../validators/validator')
+import { noteSchema } from '../validators/validator';
 
 
 const createNote = async (req: Request, res: Response) => {
@@ -28,14 +28,14 @@ const createNote = async (req: Request, res: Response) => {
     }
 };
 
-const getAllNotes = async (req: Request, res: Response) => {
-    try {
-      // const notes = await Notes.find(); 
-      // res.status(200).json(notes);
-    } catch (error) {
-      console.error('Error fetching notes:', error);
-      res.status(500).json({ error: 'Internal Server Error' });
-    }
-  };
+// const getAllNotes = async (req: Request, res: Response) => {
+//     try {
+//       // const notes = await Notes.find(); 
+//       // res.status(200).json(notes);
+//     } catch (error) {
+//       console.error('Error fetching notes:', error);
+//       res.status(500).json({ error: 'Internal Server Error' });
+//     }
+//   };
 
-export { createNote, getAllNotes };
+export { createNote };
