@@ -1,14 +1,19 @@
 import { Request, Response } from 'express';
 import { v4 as uuidv4 } from 'uuid';
-import { Notes } from '../Types/interface';
+const noteSchema = require('../validators/validator')
+
 
 const createNote = async (req: Request, res: Response) => {
     try {
-        const { title, content } = req.body;
 
-        if (!title || !content) {
-            return res.status(400).json({ error: 'Both title and content are required.' });
+        const {error, value} = noteSchema.validate(req.body);
+
+        if(error){
+          return res.status(400).json({ error: error.details[0].message });
         }
+
+        const { title, content } = value;
+          
 
         const newNote = {
             id: uuidv4(),
