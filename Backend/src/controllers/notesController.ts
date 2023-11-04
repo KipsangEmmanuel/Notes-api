@@ -20,7 +20,7 @@ const createNote = async (req: Request, res: Response) => {
         const { title, content } = req.body;
         let id = v4()
 
-        let createdAt = formartDate()
+        let createdAt = formartDate();
         const result = dbhelpers.execute('create_note', {id, title, content, createdAt})
 
         return res.status(201).json({
