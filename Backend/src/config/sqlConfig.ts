@@ -1,11 +1,11 @@
-// import * as dotenv from 'dotenv';
-// dotenv.config();
+import * as dotenv from 'dotenv';
+dotenv.config();
 import mssql from 'mssql'
 
 export const dbConfig = {
-    user: 'sa',
-    password: '@SQLserver1258631t',
-    database: 'notes',
+    user: process.env.DB_USER,
+    password: process.env.DB_PWD,
+    database: process.env.DB_NAME,
     server: 'localhost',
     pool: {
         max: 10,
