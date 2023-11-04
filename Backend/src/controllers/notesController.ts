@@ -1,6 +1,9 @@
 import { Request, Response } from 'express';
 import { v4 as uuidv4 } from 'uuid';
 import { noteSchema } from '../validators/validator';
+import mssql from 'mssql'
+import { dbConfig } from '../config/sqlConfig'
+import Connection from '../dbhelpers/dbhelper'
 
 
 const createNote = async (req: Request, res: Response) => {
@@ -28,14 +31,17 @@ const createNote = async (req: Request, res: Response) => {
     }
 };
 
-// const getAllNotes = async (req: Request, res: Response) => {
-//     try {
-//       // const notes = await Notes.find(); 
-//       // res.status(200).json(notes);
-//     } catch (error) {
-//       console.error('Error fetching notes:', error);
-//       res.status(500).json({ error: 'Internal Server Error' });
-//     }
-//   };
+const getAllNotes = async (req: Request, res: Response) => {
+    try {
 
-export { createNote };
+      // const pool = await mssql.connect(dbConfig)
+      // const pool = (await pool.request().execute('fetchAllEmployees')).recordset
+
+
+    } catch (error) {
+      console.error('Error fetching notes:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  };
+
+export { createNote};

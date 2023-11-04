@@ -2,8 +2,6 @@
 // dotenv.config();
 import mssql from 'mssql'
 
-
-
 export const dbConfig = {
     user: 'sa',
     password: '@SQLserver1258631t',
