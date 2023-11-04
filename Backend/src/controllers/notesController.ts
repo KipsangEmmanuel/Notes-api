@@ -37,7 +37,7 @@ const getAllNotes = async (req: Request, res: Response) => {
     try {
 
       const pool = await mssql.connect(dbConfig)
-      const notes = (await pool.request().execute('fetchAllEmployees')).recordset
+      const notes = (await pool.request().execute('fetchAllNotes')).recordset
 
       return res.status(200).json({
         notes: notes
