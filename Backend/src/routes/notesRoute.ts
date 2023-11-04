@@ -1,11 +1,11 @@
 import {Router} from 'express';
 
-import {createNote} from '../controllers/notesController';
+import {createNote, getAllNotes} from '../controllers/notesController';
 
 const noteRouter:Router=Router();
 
 noteRouter.post('/register', createNote);
-noteRouter.post('/register', createNote);
+noteRouter.get('/all', getAllNotes);
 
 
 export default noteRouter;

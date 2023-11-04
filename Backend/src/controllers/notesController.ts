@@ -33,17 +33,21 @@ const createNote = async (req: Request, res: Response) => {
     }
 };
 
-// const getAllNotes = async (req: Request, res: Response) => {
-//     try {
+const getAllNotes = async (req: Request, res: Response) => {
+    try {
 
-//       // const pool = await mssql.connect(dbConfig)
-//       // const pool = (await pool.request().execute('fetchAllEmployees')).recordset
+      const pool = await mssql.connect(dbConfig)
+      const notes = (await pool.request().execute('fetchAllEmployees')).recordset
+
+      return res.status(200).json({
+        notes: notes
+      })
 
 
-//     } catch (error) {
-//       console.error('Error fetching notes:', error);
-//       res.status(500).json({ error: 'Internal Server Error' });
-//     }
-//   };
+    } catch (error) {
+      console.error('Error fetching notes:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  };
 
-export { createNote};
+export { createNote, getAllNotes};
